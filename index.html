@@ -1,11 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo list</title>
+
 </head>
 <body>
-    
+
+    <h1>To-do list</h1>
+    <h2>In here, you can write and storage your tasks for your todo list</h2>
+
+    <textarea name="task" id="task" cols="80" rows="5" placeholder="Write your task here"></textarea>
+    <button type="button" onclick="saveTask()">Save task</button>
+
+    <script>
+
+        function saveTask() {
+
+            let taskTextAreaValue = document.getElementById("task").value;
+
+            alert(taskTextAreaValue);
+
+        }
+
+    </script>
+
 </body>
 </html>
