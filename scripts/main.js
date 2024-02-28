@@ -64,7 +64,6 @@ function changeTaskList(){
 
 function saveTask() {
 
-    let taskListElement = document.getElementById("tasklist");
     let taskTextAreaValue = document.getElementById("task").value;
 
     if(taskTextAreaValue != ""){
@@ -103,7 +102,6 @@ function saveTask() {
 function deleteTask(id){
 
     let decision = confirm("Do you want to delete the task?");
-    let taskListElement = document.getElementById("tasklist");
     
     if(decision){
 
@@ -117,8 +115,6 @@ function deleteTask(id){
 
 function completeTask(id){
 
-    let taskListElement = document.getElementById("tasklist");
-
     taskArray[id].status = "complete";
 
     changeTaskList();
@@ -126,8 +122,6 @@ function completeTask(id){
 }
 
 function setIncompleteTask(id){
-
-    let taskListElement = document.getElementById("tasklist");
 
     taskArray[id].status = "incomplete";
 
