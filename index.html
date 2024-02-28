@@ -10,11 +10,22 @@
 </head>
 <body class="bg-fuchsia-700">
 
-    <h1 class="text-7xl text-white">To-do list</h1>
-    <h2 class="text-4xl text-white">In here, you can write and storage your tasks for your todo list</h2>
+    <div class="flex flex-col text-center w-auto px-36 mt-7">
+        <h1 class="text-7xl text-white p-3 bg-purple-900 rounded-md">To-do list</h1><br />
+        <h2 class="text-4xl text-white">In here, you can write and storage your tasks for your todo list</h2>
+    </div>
 
-    <textarea class="text-xl" name="task" id="task" cols="80" rows="5" placeholder="Write your task here"></textarea>
-    <button type="button" onclick="saveTask()" class="bg-blue-500 hover:bg-blue-700 rounded-md p-3 text-white">Save task</button>
+    <br /><br />
+
+    <div class="flex justify-center w-auto">
+        <textarea class="text-xl p-3 rounded-md" name="task" id="task" cols="80" rows="5" placeholder="Write your task here"></textarea>
+    </div>
+
+    <br />
+
+    <div class="flex justify-center w-auto">
+        <button type="button" onclick="saveTask()" class="bg-blue-500 hover:bg-blue-700 rounded-md p-3 text-white">Save task</button>
+    </div>
 
     <br /><br />
 
