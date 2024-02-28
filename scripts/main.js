@@ -93,7 +93,7 @@ function saveTask() {
     }
     else{
 
-        console.log("Input text please");
+        alert("Write something on the field!");
 
     }
 
