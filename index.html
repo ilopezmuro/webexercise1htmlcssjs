@@ -26,6 +26,13 @@
     <script>
         let taskArray = [];
 
+        let allListItems = document.querySelectorAll('li');
+
+        function Task(description, status){
+            this.description = description;
+            this.status = status;
+        }
+
         function saveTask() {
 
             let taskListElement = document.getElementById("tasklist");
@@ -47,20 +54,36 @@
                     }
                     else{
 
-                        taskArray.push(taskTextAreaValue);
-                        console.log(`Text area is filled with: ${taskTextAreaValue}`);
+                        taskArray.push(new Task(taskTextAreaValue, "incomplete"));
+                        console.log(taskArray);
                         taskListElement.innerHTML = "";
 
                         for(let i = 0; i < taskArray.length; i++){
 
-                            taskListElement.innerHTML += `
-                            <li id="${i}" class="w-auto bg-yellow-300 p-3 text-lg text-black flex">
-                                <p class="flex-auto w-64">${i+1}. ${taskArray[i]}</p>
-                                <button onclick="deleteTask(${i})">
-                                    <strong class="float-right text-xl align-center cursor-pointer alert-del flex-none">&times;</strong>
-                                </button>
-                            </li>
-                            <br />`;
+                            if(taskArray[i].status == "incomplete"){
+
+                                taskListElement.innerHTML += `
+                                <li id="${i}" class="w-auto bg-yellow-300 p-3 text-lg text-black flex">
+                                    <p class="cursor-pointer flex-auto w-64" onclick="completeTask(${i})">${i+1}. ${taskArray[i].description}</p>
+                                    <button onclick="deleteTask(${i})">
+                                        <strong class="float-right text-xl align-center cursor-pointer alert-del flex-none">&times;</strong>
+                                    </button>
+                                </li>
+                                <br />`;
+
+                            }
+                            else{
+
+                                taskListElement.innerHTML += `
+                                <li id="${i}" class="w-auto bg-green-500 p-3 text-lg text-black flex">
+                                    <p class="cursor-pointer flex-auto w-64" onclick="completeTask(${i})">${i+1}. ${taskArray[i].description}</p>
+                                    <button onclick="deleteTask(${i})">
+                                        <strong class="float-right text-xl align-center cursor-pointer alert-del flex-none">&times;</strong>
+                                    </button>
+                                </li>
+                                <br />`;
+
+                            }
 
                         }
 
@@ -91,25 +114,74 @@
 
                 for(let i = 0; i < taskArray.length; i++){
 
-                    taskListElement.innerHTML += `
-                            <li id="${i}" class="w-auto bg-yellow-300 p-3 text-lg text-black flex">
-                                <p class="flex-auto w-64">${i+1}. ${taskArray[i]}</p>
-                                <button onclick="deleteTask(${i})">
-                                    <strong class="float-right text-xl align-center cursor-pointer alert-del flex-none">&times;</strong>
-                                </button>
-                            </li>
-                            <br />`;
+                    if(taskArray[i].status == "incomplete"){
+
+                        taskListElement.innerHTML += `
+                        <li id="${i}" class="w-auto bg-yellow-300 p-3 text-lg text-black flex">
+                            <p class="cursor-pointer flex-auto w-64" onclick="completeTask(${i})">${i+1}. ${taskArray[i].description}</p>
+                            <button onclick="deleteTask(${i})">
+                                <strong class="float-right text-xl align-center cursor-pointer alert-del flex-none">&times;</strong>
+                            </button>
+                        </li>
+                        <br />`;
+
+                    }
+                    else{
+
+                        taskListElement.innerHTML += `
+                        <li id="${i}" class="w-auto bg-green-500 p-3 text-lg text-black flex">
+                            <p class="cursor-pointer flex-auto w-64" onclick="completeTask(${i})">${i+1}. ${taskArray[i].description}</p>
+                            <button onclick="deleteTask(${i})">
+                                <strong class="float-right text-xl align-center cursor-pointer alert-del flex-none">&times;</strong>
+                            </button>
+                        </li>
+                        <br />`;
+
+                    }
+
                 }
 
             }
 
         }
 
-        /*function completeTask(id){
+        function completeTask(id){
+            let taskListElement = document.getElementById("tasklist");
 
-            let taskToChangeComplete = 
+            taskArray[id].status = "complete";
 
-        }*/
+            taskListElement.innerHTML = "";
+
+            for(let i = 0; i < taskArray.length; i++){
+
+                if(taskArray[i].status == "incomplete"){
+
+                    taskListElement.innerHTML += `
+                    <li id="${i}" class="w-auto bg-yellow-300 p-3 text-lg text-black flex">
+                        <p class="cursor-pointer flex-auto w-64" onclick="completeTask(${i})">${i+1}. ${taskArray[i].description}</p>
+                        <button onclick="deleteTask(${i})">
+                            <strong class="float-right text-xl align-center cursor-pointer alert-del flex-none">&times;</strong>
+                        </button>
+                    </li>
+                    <br />`;
+
+                }
+                else{
+
+                    taskListElement.innerHTML += `
+                    <li id="${i}" class="w-auto bg-green-500 p-3 text-lg text-black flex">
+                        <p class="cursor-pointer flex-auto w-64" onclick="completeTask(${i})">${i+1}. ${taskArray[i].description}</p>
+                        <button onclick="deleteTask(${i})">
+                            <strong class="float-right text-xl align-center cursor-pointer alert-del flex-none">&times;</strong>
+                        </button>
+                    </li>
+                    <br />`;
+
+                }
+
+            }
+
+        }
 
     </script>
 
